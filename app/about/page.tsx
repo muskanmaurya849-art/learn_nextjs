@@ -1,12 +1,31 @@
 import '../globals.css'
-export default function Page(){
-    return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div  className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">This is the about page of my Next.js app.</div>
-            <h1 className="text-2xl font-bold">This is my about page.</h1>
-            <p>Welcome to Study Hub. This website helps students learn programming, prepare for exams, and improve their skills.</p>
-            <p>I created this website because I wanted one place to keep my notes, projects, and learning resources.</p>
-            <p>Our mission is to make learning simple, free, and easy for everyone.</p>
-        </main>
+export default function Page() {return (
+    <main>
+
+        <section className="py-10 px-20 text-black bg-white dark:bg-white-500">
+        <h1 className="text-5xl font-bold">About Study Hub</h1>
+        </section>
+
+        <section className="max-w-7xl mx-auto py-10 px-20 text-black bg-white dark:bg-white-500">
+        <h2 className="text-3xl font-bold">Who Am I?</h2>
+        <p className="mt-4">I created this website to organize my notes, assignments,
+        and projects in one place.</p>
+        </section>
+
+        <section className="max-w-7xl mx-auto py-10 px-20 text-black bg-white dark:bg-white-300">
+        <div className="grid grid-cols-3 gap-4 align-items-top ">
+            <div className="bg-gray-500 p-4 rounded-lg text-white mt-4 border border-white-300 shadow-lg bg-sky-500 hover:bg-sky-700 ...">
+                <h2 className="text-3xl font-bold text-white py-4">What is Study Hub?</h2>
+                <div className="rounded-lg mt-4 shadow-lg hover:scale-1"><img src="/student.jpg" alt="student.jpg" width="500" height="333"></img></div>
+                <p>Study Hub is a platform that allows students to easily access and manage their study materials. It provides a centralized location for notes, assignments, and projects, making it easier for students to stay organized and focused on their studies.</p>
+
+            </div>
+        
+            <div className="rounded-lg mt-4 shadow-lg"><img src="/student.jpg" alt="student.jpg" width="500" height="333"></img></div>
+
+            <div className="rounded-lg mt-4 shadow-lg hover:scale-1"><img src="/student.jpg" alt="student.jpg" width="500" height="333"></img></div>
+        </div>
+        </section>
+    </main>
     );
 }
