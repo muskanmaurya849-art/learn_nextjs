@@ -1,3 +1,4 @@
+import LikeButton from "./components/LikeButton";
 import SamosaCard from "./components/SamosaMenu";
 
 const samosaItems = [
@@ -6,18 +7,24 @@ const samosaItems = [
     description: "Freshly made with spiced potatoes and peas.",
     price: 99,
     image: "/samosa1.png",
+    Like:0,
+    Liked:false,
   },
   {
     name: "Aalu Samosa",
     description: "Crispy golden bites filled with potato and spices.",
     price: 129,
     image: "/samosa2.png",
+    Like:0,
+    Liked:false,
   },
   {
     name: "Cheese Samosa",
     description: "A rich, cheesy twist on the classic favorite.",
     price: 149,
     image: "/samosa3.png",
+    Like: 0,
+    Liked:false,
   },
 ];
 
@@ -34,26 +41,29 @@ export default function Home() {
             ingredients. Enjoy authentic taste with every bite.
           </p>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            <div className="rounded-lg bg-white p-3 text-left text-gray-500 shadow-lg">
+          <div className="mt-2 grid gap-4 md:grid-cols-2">
+            <div className="rounded-lg bg-white text-left p-2 text-gray-500 shadow-lg">
               <h4 className="text-lg font-medium">Enter your delivery location</h4>
             </div>
-            <div className="rounded-lg bg-white p-3 text-left text-gray-500 shadow-lg">
+            <div className="rounded-lg bg-white p-2 text-left text-gray-500 shadow-lg">
               <h4 className="text-lg font-medium">
                 Search for restaurant, item or more
               </h4>
             </div>
           </div>
 
-          <div className="mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-3">
             {samosaItems.map((item) => (
-              <SamosaCard
-                key={item.name}
-                name={item.name}
-                description={item.description}
-                price={item.price}
-                image={item.image}
-              />
+              <div key={item.name} className="h-full">
+                <SamosaCard
+                  name={item.name}
+                  description={item.description}
+                  price={item.price}
+                  image={item.image}
+                  likes={item.Like}
+                  liked={item.Liked}
+                />
+              </div>
             ))}
           </div>
         </section>

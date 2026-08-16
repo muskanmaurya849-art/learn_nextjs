@@ -3,29 +3,31 @@
 import { useState } from "react";
 
 export default function LikeButton() {
-  const [liked, setLiked] = useState(false);
-  const [likes, setLikes] = useState(0);
+    const [liked, setLiked] = useState(false);
+    const [likes, setLikes] = useState(0);
 
-  const handleLike = () => {
-    setLiked((prevLiked) => {
-      const nextLiked = !prevLiked;
-      setLikes((prevLikes) => prevLikes + (nextLiked ? 1 : -1));
-      return nextLiked;
-    });
-  };
+    const handleLike = () => {
+        if (liked) {
+            setLikes((count) => count - 1);
+            setLiked(false);
+            return;
+        }
 
-  return (
-    <button
-      type="button"
-      onClick={handleLike}
-      aria-label={liked ? "Unlike item" : "Like item"}
-      className="flex items-center gap-2 rounded-full bg-white px-3 py-2 shadow-md transition hover:scale-105"
-    >
-      <span className={liked ? "text-red-500" : "text-gray-500"}>
-        {liked ? "❤️" : "♡"}
-      </span>
+        setLikes((count) => count + 1);
+        setLiked(true);
+    };
 
-      <span className="text-sm text-gray-700">{likes}</span>
-    </button>
-  );
+    return (
+        <button
+            type="button"
+            onClick={handleLike}
+            aria-label={liked ? "Remove like" : "Like item"}
+            className={`flex items-center gap-2 rounded-full px-3 py-2 shadow-md transition hover:scale-105 ${
+                liked ? "bg-red-50 text-red-600" : "bg-white text-white-600"
+            }`}
+        >
+            <span aria-hidden="true">{liked ? "❤️" : "♡"}</span>
+            <span className="text-sm font-medium">{likes}</span>
+        </button>
+    );
 }
