@@ -1,12 +1,16 @@
+"use client";
+
 import Image from "next/image";
-import LikeButton from "./LikeButton";
 import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface SamosaCardProps {
     name: string;
     description: string;
     price: number;
     image: string;
+    likes?: number;
+    liked?: boolean;
 }
 
 export default function SamosaCard({
@@ -14,49 +18,61 @@ export default function SamosaCard({
     description,
     price,
     image,
+    likes = 0,
+    liked = false,
 }: SamosaCardProps) {
-return (
-    <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg">
+    const [isLiked, setIsLiked] = useState(liked);
+    const [likeCount, setLikeCount] = useState(likes);
 
-        {/* Image */}
-        <div className="relative h-64 w-full">
-            <Image
-            src={image}
-            alt={name}
-            fill
-            className="object-cover transition-transform duration-500 hover:scale-110"
-            />
+    const handleLike = () => {
+        if (isLiked) {
+            setLikeCount(likeCount - 1);
+        } else {
+            setLikeCount(likeCount + 1);
+        }
+        setIsLiked(!isLiked);
+    };
 
-            {/* Like Button */}
-            <div className="absolute right-4 top-4">
-            <LikeButton />
-            </div>
-        </div>
-
-      {/* Content */}
-        <div className="p-5">
-
-        <h2 className="text-2xl font-bold text-gray-800">
-            {name}
-        </h2>
-
-        <p className="mt-2 text-gray-600">
-            {description}
-        </p>
-
-        <div className="mt-4 flex items-center justify-between">
-
-            <span className="text-xl font-bold text-orange-600">
-            ₹{price}
-            </span>
-
-            <button className="rounded-lg bg-orange-600 px-4 py-2 text-white transition hover:bg-orange-700">
-            <ArrowRight />
+    return (
+        <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg">
+            {/* Like Button - Top Right */}
+            <button 
+                onClick={handleLike}
+                className="absolute right-3 top-3 z-10 flex items-center gap-2 rounded-full bg-white px-3 py-2 shadow-md hover:scale-105 transition">
+                <span className="text-2xl">{isLiked ? "❤️" : "♡"}</span>
+                <span className="text-sm font-bold text-gray-800">{likeCount}</span>
             </button>
 
-        </div>
+            {/* Image */}
+            <div className="relative h-64 w-full">
+                <Image
+                    src={image}
+                    alt={name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 hover:scale-110"
+                />
+            </div>
 
+            {/* Content */}
+            <div className="p-5">
+                <h2 className="text-2xl font-bold text-gray-800">
+                    {name}
+                </h2>
+
+                <p className="mt-2 text-gray-600">
+                    {description}
+                </p>
+
+                <div className="mt-4 flex items-center justify-between">
+                    <span className="text-xl font-bold text-orange-600">
+                        ₹{price}
+                    </span>
+                    <button className="rounded-lg bg-orange-600 px-4 py-2 text-white transition hover:bg-orange-700 flex items-center gap-2">
+                        <ArrowRight/>
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
     );
 }
