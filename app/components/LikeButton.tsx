@@ -16,18 +16,22 @@ export default function LikeButton() {
         setLikes((count) => count + 1);
         setLiked(true);
     };
-
+    
     return (
         <button
             type="button"
             onClick={handleLike}
             aria-label={liked ? "Remove like" : "Like item"}
-            className={`flex items-center gap-2 rounded-full px-3 py-2 shadow-md transition hover:scale-105 ${
-                liked ? "bg-red-50 text-red-600" : "bg-white text-white-600"
+            style={{ borderRadius: "9999px" }}
+            className={`flex h-12 items-center gap-2 rounded-full border border-gray-200 px-3 shadow-md transition-transform hover:scale-105 ${
+                liked
+                    ? "bg-red-50 text-red-600"
+                    : "bg-white text-gray-600"
             }`}
         >
             <span aria-hidden="true">{liked ? "❤️" : "♡"}</span>
             <span className="text-sm font-medium">{likes}</span>
+            
         </button>
     );
 }

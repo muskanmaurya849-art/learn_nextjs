@@ -26,9 +26,6 @@ export default function BlogPage() {
     <main className="min-h-screen bg-orange-50 px-4 py-10 text-gray-800">
       <div className="mx-auto max-w-5xl">
         <div className="mb-10 text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-orange-600">
-            Blog
-          </p>
           <h1 className="text-4xl font-bold text-orange-700 md:text-5xl">
             Samosa stories & kitchen tips
           </h1>

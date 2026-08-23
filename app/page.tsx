@@ -1,5 +1,6 @@
-import LikeButton from "./components/LikeButton";
 import SamosaCard from "./components/SamosaMenu";
+import Counter from "./components/Counter/Index";
+
 
 const samosaItems = [
   {
@@ -9,6 +10,7 @@ const samosaItems = [
     image: "/samosa1.png",
     Like:0,
     Liked:false,
+
   },
   {
     name: "Aalu Samosa",
@@ -40,10 +42,9 @@ export default function Home() {
             Fresh, crispy, and delicious samosas made every day using quality
             ingredients. Enjoy authentic taste with every bite.
           </p>
-
           <div className="mt-2 grid gap-4 md:grid-cols-2">
             <div className="rounded-lg bg-white text-left p-2 text-gray-500 shadow-lg">
-              <h4 className="text-lg font-medium">Enter your delivery location</h4>
+              <h4 className="text-lg font-medium mr-2 size={20} strokeWidth={1.25}">Enter your delivery location</h4>
             </div>
             <div className="rounded-lg bg-white p-2 text-left text-gray-500 shadow-lg">
               <h4 className="text-lg font-medium">
@@ -66,6 +67,8 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          <Counter />
         </section>
       </main>
     </div>

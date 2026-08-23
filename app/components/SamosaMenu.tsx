@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 interface SamosaCardProps {
     name: string;
@@ -36,10 +36,13 @@ export default function SamosaCard({
     return (
         <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg">
             {/* Like Button - Top Right */}
-            <button 
+            <button
+                type="button"
                 onClick={handleLike}
-                className="absolute right-3 top-3 z-10 flex items-center gap-2 rounded-full bg-white px-3 py-2 shadow-md hover:scale-105 transition">
-                <span className="text-2xl">{isLiked ? "❤️" : "♡"}</span>
+                aria-label={isLiked ? "Remove like" : "Like item"}
+                style={{ borderRadius: "9999px" }}
+                className="absolute right-3 top-3 z-10 flex h-12 items-center gap-2 rounded-full border border-gray-200 bg-white px-3 shadow-md transition-transform hover:scale-105">
+                <span className="text-2xl text-gray-500">{isLiked ? "❤️" : "♡"}</span>
                 <span className="text-sm font-bold text-gray-800">{likeCount}</span>
             </button>
 
@@ -68,11 +71,17 @@ export default function SamosaCard({
                     <span className="text-xl font-bold text-orange-600">
                         ₹{price}
                     </span>
-                    <button className="rounded-lg bg-orange-600 px-4 py-2 text-white transition hover:bg-orange-700 flex items-center gap-2">
-                        <ArrowRight/>
+                    <button
+                        type="button"
+                        aria-label={`View ${name}`}
+                        style={{ borderRadius: "9999px" }}
+                        className="flex items-center justify-center rounded-full bg-orange-600 text-white transition hover:bg-orange-700"
+                    >
+                        <ArrowRight />
                     </button>
                 </div>
             </div>
+
         </div>
     );
 }
