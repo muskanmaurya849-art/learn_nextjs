@@ -20,6 +20,7 @@ return (
                 <Link href="/blog">Blog</Link>
                 <Link href="/contact">Contact</Link>
                 <Link href="/about">About</Link>
+                <Link href="/Menu">Menu</Link>
             </nav>
         </header>
     
